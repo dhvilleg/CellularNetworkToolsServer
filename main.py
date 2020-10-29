@@ -9,6 +9,9 @@ def add_user():
     try:
         _json = request.json
         _timestamp = _json['timestamp']
+        _deviceUUID = _json['deviceUUID']
+        _ratingCounter = _json['ratingCounter']
+        _simNumberID = _json['simNumberID']
         _countryISO = _json['countryISO']
         _phoneOperatorId = _json['phoneOperatorId']
         _simOperatorId = _json['simOperatorId']
@@ -25,6 +28,8 @@ def add_user():
         _pingTimeMilis = _json['pingTimeMilis']
         _downloadSpeed = _json['downloadSpeed']
         _uploadSpeed = _json['uploadSpeed']
+        _ipPublicAddr = _json['ipPublicAddr']
+        _internetISP = _json['internetISP']
         _phoneSignalStrength = _json['phoneSignalStrength']
         _phoneAsuStrength = _json['phoneAsuStrength']
         _phoneSignalLevel = _json['phoneSignalLevel']
@@ -54,13 +59,14 @@ def add_user():
         _cellGsmArcfn = _json['cellGsmArcfn']
         _cellGsmLac = _json['cellGsmLac']
         _cellGsmCid = _json['cellGsmCid']
+
         # validate the received values
-        if _timestamp and _countryISO and _phoneOperatorId and _simOperatorId and _operatorMcc and _operatorMnc and _devManufacturer and _devModel and _isConected and _phoneNetStandard and _phoneNetTechnology and _internetConNetwork and _latitude and _longitude and _pingTimeMilis and _downloadSpeed and _uploadSpeed and _phoneSignalStrength and _phoneAsuStrength and _phoneSignalLevel and _signalQuality and _fieldIsRegistered and _phoneRsrpStrength and _phoneRssnrStrength and _phoneTimingAdvance and _phoneCqiStrength and _phoneRsrqStrength and _cellLtePci and _cellLteCid and _cellLteTac and _cellLteeNodeB and _cellLteEarfcn and _cellBslat and _cellBslon and _cellSid and _cellNid and _cellBid and _cellWcdmaLac and _cellWcdmaUcid and _cellWcdmaUarfcn and _cellWcdmaPsc and _cellWcdmaCid and _cellWcdmaRnc and _cellGsmArcfn and _cellGsmLac and _cellGsmCid and request.method == 'POST':
+        if _timestamp and _deviceUUID and _ratingCounter and _simNumberID and _countryISO and _phoneOperatorId and _simOperatorId and _operatorMcc and _operatorMnc and _devManufacturer and _devModel and _isConected and _phoneNetStandard and _phoneNetTechnology and _internetConNetwork and _latitude and _longitude and _pingTimeMilis and _downloadSpeed and _uploadSpeed and _ipPublicAddr and _internetISP and _phoneSignalStrength and _phoneAsuStrength and _phoneSignalLevel and _signalQuality and _fieldIsRegistered and _phoneRsrpStrength and _phoneRssnrStrength and _phoneTimingAdvance and _phoneCqiStrength and _phoneRsrqStrength and _cellLtePci and _cellLteCid and _cellLteTac and _cellLteeNodeB and _cellLteEarfcn and _cellBslat and _cellBslon and _cellSid and _cellNid and _cellBid and _cellWcdmaLac and _cellWcdmaUcid and _cellWcdmaUarfcn and _cellWcdmaPsc and _cellWcdmaCid and _cellWcdmaRnc and _cellGsmArcfn and _cellGsmLac and _cellGsmCid and request.method == 'POST':
             #do not save password as a plain text
             #_hashed_password = generate_password_hash(_password)
             # save edits
-            sql = "INSERT INTO tbcellularscan(timestamp, countryISO, phoneOperatorId, simOperatorId, operatorMcc, operatorMnc, devManufacturer, devModel, isConected, phoneNetStandard, phoneNetTechnology, internetConNetwork, latitude, longitude, pingTimeMilis, downloadSpeed, uploadSpeed, phoneSignalStrength, phoneAsuStrength, phoneSignalLevel, signalQuality, fieldIsRegistered, phoneRsrpStrength, phoneRssnrStrength, phoneTimingAdvance, phoneCqiStrength, phoneRsrqStrength, cellLtePci, cellLteCid, cellLteTac, cellLteeNodeB, cellLteEarfcn, cellBslat, cellBslon, cellSid, cellNid, cellBid, cellWcdmaLac, cellWcdmaUcid, cellWcdmaUarfcn, cellWcdmaPsc, cellWcdmaCid, cellWcdmaRnc, cellGsmArcfn, cellGsmLac, cellGsmCid ) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-            data = (_timestamp, _countryISO, _phoneOperatorId, _simOperatorId, _operatorMcc, _operatorMnc, _devManufacturer, _devModel, _isConected, _phoneNetStandard, _phoneNetTechnology, _internetConNetwork, _latitude, _longitude, _pingTimeMilis, _downloadSpeed, _uploadSpeed, _phoneSignalStrength, _phoneAsuStrength, _phoneSignalLevel, _signalQuality, _fieldIsRegistered, _phoneRsrpStrength, _phoneRssnrStrength, _phoneTimingAdvance, _phoneCqiStrength, _phoneRsrqStrength, _cellLtePci, _cellLteCid, _cellLteTac, _cellLteeNodeB, _cellLteEarfcn, _cellBslat, _cellBslon, _cellSid, _cellNid, _cellBid, _cellWcdmaLac, _cellWcdmaUcid, _cellWcdmaUarfcn, _cellWcdmaPsc, _cellWcdmaCid, _cellWcdmaRnc, _cellGsmArcfn, _cellGsmLac, _cellGsmCid,)
+            sql = "INSERT INTO tbcellularscan(timestamp, deviceUUID, ratingCounter, simNumberID, countryISO, phoneOperatorId, simOperatorId, operatorMcc, operatorMnc, devManufacturer, devModel, isConected, phoneNetStandard, phoneNetTechnology, internetConNetwork, latitude, longitude, pingTimeMilis, downloadSpeed, uploadSpeed, ipPublicAddr, internetISP, phoneSignalStrength, phoneAsuStrength, phoneSignalLevel, signalQuality, fieldIsRegistered, phoneRsrpStrength, phoneRssnrStrength, phoneTimingAdvance, phoneCqiStrength, phoneRsrqStrength, cellLtePci, cellLteCid, cellLteTac, cellLteeNodeB, cellLteEarfcn, cellBslat, cellBslon, cellSid, cellNid, cellBid, cellWcdmaLac, cellWcdmaUcid, cellWcdmaUarfcn, cellWcdmaPsc, cellWcdmaCid, cellWcdmaRnc, cellGsmArcfn, cellGsmLac, cellGsmCid ) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            data = (_timestamp, _deviceUUID, _ratingCounter, _simNumberID, _countryISO, _phoneOperatorId, _simOperatorId, _operatorMcc, _operatorMnc, _devManufacturer, _devModel, _isConected, _phoneNetStandard, _phoneNetTechnology, _internetConNetwork, _latitude, _longitude, _pingTimeMilis, _downloadSpeed, _uploadSpeed, _ipPublicAddr, _internetISP, _phoneSignalStrength, _phoneAsuStrength, _phoneSignalLevel, _signalQuality, _fieldIsRegistered, _phoneRsrpStrength, _phoneRssnrStrength, _phoneTimingAdvance, _phoneCqiStrength, _phoneRsrqStrength, _cellLtePci, _cellLteCid, _cellLteTac, _cellLteeNodeB, _cellLteEarfcn, _cellBslat, _cellBslon, _cellSid, _cellNid, _cellBid, _cellWcdmaLac, _cellWcdmaUcid, _cellWcdmaUarfcn, _cellWcdmaPsc, _cellWcdmaCid, _cellWcdmaRnc, _cellGsmArcfn, _cellGsmLac, _cellGsmCid,)
             conn = mysql.connect()
             cursor = conn.cursor()
             cursor.execute(sql, data)
@@ -75,6 +81,41 @@ def add_user():
     finally:
         cursor.close()
         conn.close()
+
+
+@app.route('/adddev', methods=['POST'])
+def add_dev():
+    try:
+        _json = request.json
+        _deviceUUID = _json['deviceUUID']
+        _deviceModel = _json['deviceModel']
+        _deviceOS = _json['deviceOS']
+        _osVersion = _json['osVersion']
+        _isDualSim = _json['isDualSim']
+        _fieldIsRegistered = _json['fieldIsRegistered']
+
+
+        # validate the received values
+        if _deviceUUID and _deviceModel and _deviceOS and _osVersion and _isDualSim and _fieldIsRegistered and request.method == 'POST':
+            #do not save password as a plain text
+            #_hashed_password = generate_password_hash(_password)
+            # save edits
+            sql = "INSERT INTO tbdeviceinformation(deviceUUID, deviceModel, deviceOS, osVersion, isDualSim, fieldIsRegistered ) VALUES(%s, %s, %s, %s, %s, %s)"
+            data = (_deviceUUID, _deviceModel, _deviceOS, _osVersion, _isDualSim, _fieldIsRegistered,)
+            conn = mysql.connect()
+            cursor = conn.cursor()
+            cursor.execute(sql, data)
+            conn.commit()
+            resp = jsonify('registro credado satisfactoriamente!')
+            resp.status_code = 200
+            return resp
+        else:
+            return not_found()
+    except Exception as e:
+        print(e)
+    finally:
+        cursor.close()
+        conn.close()        
 
 @app.route('/getdata')
 def users():
